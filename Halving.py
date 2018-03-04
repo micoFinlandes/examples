@@ -4,26 +4,21 @@ highest = 1000000
 
 times = set() 
 
-for time in range (1, 1000):
+right_answer = random.randint(1, highest)
+guess_answer = -1
+guess_high = highest
+guess_low = 0 
+answers = []
 
-   answer = random.randint(1, highest)
-   asnwer = -1
-   asnwerh = highest
-   asnwerl = 0
-   asnwers = [] 
-
-   while asnwer!= answer:
-      asnwer = asnwerl + int((asnwerh - asnwerl)/2) 
-      print(asnwer) 
-      asnwers.append(asnwer)
-      if asnwer < answer:
-          print("up") 
-          asnwerl = asnwer
-      elif asnwer > answer:
-          print("down") 
-          asnwerh = asnwer
-   else:
-      print("Waude! %d arvausta." % len(asnwers)) 
-      times.add(len(asnwers)) 
-
-print(times)
+while guess_answer != right_answer:
+   guess_answer = guess_low + int((guess_high - guess_low)/2) 
+   print(guess_answer) 
+   answers.append(guess_answer)
+   if guess_answer < right_answer:
+      print("up") 
+      guess_low = guess_answer 
+   elif guess_answer > right_answer:
+      print("down") 
+      guess_high = guess_answer
+else:
+   print("Cool! %d tries only." % len(answers))
